@@ -1,22 +1,1162 @@
-<!doctype html>
-<html lang="pt-BR"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="theme-color" content="#98574b"><meta name="description" content="Descubra seu próximo passo para produzir e organizar encomendas de bem-casados."><title>Quiz | Bem Casados Express</title>
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-L88EQRKZ4G"></script><script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments)}gtag('js',new Date());gtag('config','G-L88EQRKZ4G');</script>
-<style>*{box-sizing:border-box}body{margin:0;background:#fff8f3;color:#352a28;font-family:system-ui,-apple-system,Arial,sans-serif}.wrap{max-width:620px;margin:auto;padding:24px 18px 60px}header{text-align:center;margin:18px 0 28px}.brand{font-size:12px;letter-spacing:2px;color:#9d6055;font-weight:800}h1{font-size:clamp(28px,6vw,38px);line-height:1.15}p{color:#655754;line-height:1.6}.card{background:white;padding:25px;border-radius:22px;box-shadow:0 12px 40px #6a3b2c13;border:1px solid #eedbd3}.small{font-size:13px;color:#995f54;font-weight:700}.track{height:8px;background:#f3e1d9;border-radius:20px;overflow:hidden;margin:15px 0 26px}.fill{height:100%;background:#a96254;width:0;transition:width .2s}h2{font-size:24px;line-height:1.3}.opt{display:block;width:100%;padding:17px;text-align:left;margin:10px 0;border-radius:12px;border:1px solid #dfcbc2;background:white;font:inherit;cursor:pointer}.opt[aria-pressed=true]{border:2px solid #a96254;background:#fff1e9;padding:16px;font-weight:700}.actions{display:flex;justify-content:space-between;gap:10px;margin-top:25px}.next,.cta{border:0;border-radius:12px;background:#914f45;color:white;padding:16px 20px;font-weight:800;font:inherit;cursor:pointer;text-decoration:none}.next:disabled{opacity:.4}.back{border:0;background:transparent;color:#805e58;font:inherit;cursor:pointer}.cta{display:block;text-align:center;margin-top:25px;font-weight:800}.feature{border-bottom:1px solid #f1e4de;padding:12px 0}footer{text-align:center;margin-top:28px;font-size:12px;color:#88746e}[hidden]{display:none!important}</style></head><body>
-<main class="wrap"><header><div class="brand">BEM CASADOS EXPRESS</div><h1>Você está pronta para receber encomendas de bem-casados?</h1><p>Responda 7 perguntas rápidas e descubra seu próximo passo.</p></header><section class="card" id="quiz"><div class="small" id="count"></div><div class="track"><div class="fill" id="fill"></div></div><h2 id="question"></h2><div id="options"></div><div class="actions"><button class="back" id="back">Voltar</button><button class="next" id="next" disabled>Continuar</button></div></section><section class="card" id="result" hidden><div class="brand">SEU RESULTADO</div><h2 id="resultTitle"></h2><p id="resultText"></p><h2>Conheça o Bem Casados Express</h2><p>Um aplicativo para consultar orientações e organizar as etapas do preparo à entrega, na palma da mão.</p><div class="feature">✓ Preparo da receita e envelopamento</div><div class="feature">✓ Calculadoras e listas de compras</div><div class="feature">✓ Organização de pedidos e modelo de contrato</div><div class="feature">✓ Orientações para produção e entrega</div><a id="buy" class="cta" href="https://pay.kiwify.com.br/XYsq4LD">Quero o Bem Casados Express</a><p style="font-size:12px">Você será encaminhada para o checkout da Kiwify.</p><button class="back" id="restart">Refazer quiz</button></section><footer>Bem Casados Express</footer></main>
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#163c32">
+<title>mesadoce</title>
+<style>
+:root{
+  --green:#163c32;--wine:#702b36;--gold:#c5a46d;
+  --cream:#fff9ef;--paper:#fff;--text:#26352f;
+  --muted:#6c776e;--line:#e7e5dd;
+}
+*{box-sizing:border-box}
+body{margin:0;background:var(--cream);color:var(--text);
+  font:15px/1.5 Arial,Helvetica,sans-serif}
+button,input,select,textarea{font:inherit}
+button{cursor:pointer}
+header{background:var(--green);color:white;padding:26px 16px}
+.wrap{max-width:1050px;margin:auto}
+.brand{color:#e5c98f;letter-spacing:3px;font-size:11px;
+  font-weight:700;text-transform:uppercase}
+h1{font-family:Georgia,serif;font-size:38px;margin:7px 0}
+h2{font-family:Georgia,serif;font-size:27px;margin:0 0 14px}
+h3{margin:8px 0}
+.hero-sub{color:#e0e8df;max-width:600px}
+.pills{display:flex;flex-wrap:wrap;gap:8px;margin-top:16px}
+.pill{background:#345a4c;padding:6px 12px;border-radius:30px;
+  font-size:12px;color:#fff}
+nav{display:flex;gap:8px;overflow-x:auto;padding:13px 16px;
+  background:white;border-bottom:1px solid var(--line);
+  position:sticky;top:0;z-index:10}
+nav button{flex-shrink:0;background:#f5f3ed;border:0;
+  border-radius:8px;padding:10px 14px;color:var(--text);font-weight:700}
+nav button.active{background:var(--green);color:white}
+main{max-width:1050px;margin:24px auto;padding:0 16px 50px}
+.section{display:none}
+.section.active{display:block}
+.panel{background:white;border:1px solid var(--line);
+  border-radius:14px;padding:18px;margin-bottom:16px}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+  gap:15px}
+.grid2{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
+.card{background:white;border:1px solid var(--line);
+  border-radius:14px;overflow:hidden}
+.card img{width:100%;height:185px;object-fit:cover;display:block}
+.cardbody{padding:14px}
+.card h3{font-family:Georgia,serif;font-size:20px}
+.photo-pending{height:185px;background:linear-gradient(135deg,#e6dbce,#f4ebe1);
+  display:grid;place-items:center;text-align:center;
+  color:#786d5e;font-size:12px}
+.photo-pending span{display:block;font-size:34px}
+.tag{font-size:11px;color:var(--wine);background:#f8edef;
+  padding:4px 7px;border-radius:5px;display:inline-block}
+.muted{color:var(--muted);font-size:13px}
+button.primary{background:var(--green);color:white;border:0;
+  padding:11px 15px;border-radius:9px;font-weight:bold}
+button.secondary{background:white;color:var(--green);
+  border:1px solid #bfd0c4;padding:10px 13px;border-radius:9px}
+button.danger{color:#a23131;border:1px solid #e0c4c4;
+  background:white;border-radius:8px;padding:7px 11px}
+button:disabled{opacity:.5;cursor:not-allowed}
+.actions{display:flex;gap:8px;flex-wrap:wrap}
+.field{width:100%;padding:10px;border:1px solid #d9ddd7;
+  border-radius:8px;background:white;color:var(--text)}
+label{display:block;font-size:12px;font-weight:bold;margin:8px 0 4px}
+.row{display:flex;align-items:center;justify-content:space-between;
+  gap:12px;padding:10px 0;border-bottom:1px solid var(--line)}
+.row:last-child{border:0}
+table{width:100%;border-collapse:collapse;font-size:13px}
+td,th{padding:10px;border-bottom:1px solid var(--line);text-align:left}
+.tablewrap{overflow-x:auto}
+.summary{background:#edf4ee;border-radius:12px;padding:18px}
+.summary strong{font-size:26px;color:var(--green)}
+.notice{background:#fff5dc;border-left:4px solid var(--gold);
+  padding:13px;border-radius:5px;font-size:13px}
+.center{text-align:center}
+footer{padding:20px 16px;background:#f1ede4;color:var(--muted);
+  text-align:center;font-size:12px}
+#recipeDetail{display:none}
+#recipeDetail.open{display:block}
+ul,ol{padding-left:23px}
+li{margin-bottom:6px}
+@media(max-width:600px){
+  h1{font-size:32px}.grid2{grid-template-columns:1fr}
+  nav{padding:9px 10px}nav button{font-size:12px;padding:9px 11px}
+  .row{align-items:flex-start}td,th{padding:8px 6px}
+}
+@media print{
+  header,nav,footer,.no-print{display:none!important}
+  body{background:white;color:#000;font-size:11pt}
+  main{margin:0;padding:0;max-width:none}
+  .section{display:none!important}
+  #guide{display:block!important}
+  .panel{border:0;padding:0}
+  .printRecipe{page-break-inside:avoid;break-inside:avoid;
+    border-bottom:1px solid #bbb;padding:14px 0}
+  .printRecipe h3{color:#163c32}
+}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap">
+    <div class="brand">Coleção natalina</div>
+    <h1>mesadoce</h1>
+    <div class="hero-sub">
+      Chef Isa Alencar · Método 3 × 30<br>
+      Sobremesas para transformar encomendas em vendas.
+    </div>
+    <div class="pills">
+      <span class="pill">3 bases</span>
+      <span class="pill">30 sobremesas</span>
+      <span class="pill">3 apresentações</span>
+    </div>
+  </div>
+</header>
+
+<nav id="navigation" aria-label="Menu principal">
+  <button data-page="catalog" class="active">Receitas</button>
+  <button data-page="pricing">Precificação</button>
+  <button data-page="shopping">Compras</button>
+  <button data-page="orders">Encomendas</button>
+  <button data-page="menu">Cardápio</button>
+  <button data-page="guide">Guia / PDF</button>
+  <button data-page="backup">Backup</button>
+</nav>
+
+<main>
+
+<section id="catalog" class="section active">
+  <h2>Biblioteca de sobremesas</h2>
+  <p class="muted">Escolha a sobremesa, consulte os ingredientes e
+    adicione quantidades à sua produção.</p>
+  <div class="panel grid2">
+    <div>
+      <label for="search">Buscar sobremesa</label>
+      <input id="search" class="field" placeholder="Ex.: damasco, paçoca">
+    </div>
+    <div>
+      <label for="baseFilter">Família de receitas</label>
+      <select id="baseFilter" class="field">
+        <option value="">Todas as bases</option>
+        <option value="B1">Creme branco</option>
+        <option value="B2">Chocolate</option>
+        <option value="B3">Crocante e camadas</option>
+      </select>
+    </div>
+  </div>
+  <div id="cards" class="grid"></div>
+  <article id="recipeDetail" class="panel"></article>
+</section>
+
+<section id="pricing" class="section">
+  <h2>Precificação inteligente</h2>
+  <div class="notice">
+    Informe seus próprios preços de compra. A calculadora não utiliza
+    valores fictícios como se fossem cotações reais.
+  </div>
+  <div class="panel">
+    <label for="priceRecipe">Receita</label>
+    <select id="priceRecipe" class="field"></select>
+    <label for="priceQty">Quantidade de travessas</label>
+    <input id="priceQty" class="field" type="number" min="1" value="1">
+    <div id="ingredientCosts"></div>
+  </div>
+  <div class="panel">
+    <h3>Despesas e preço de venda</h3>
+    <div class="grid2">
+      <div>
+        <label>Embalagem por travessa (R$)</label>
+        <input class="field setting" data-setting="packaging"
+          type="number" min="0" step=".01" value="0">
+      </div>
+      <div>
+        <label>Mão de obra por travessa (R$)</label>
+        <input class="field setting" data-setting="labor"
+          type="number" min="0" step=".01" value="0">
+      </div>
+      <div>
+        <label>Outras despesas por travessa (R$)</label>
+        <input class="field setting" data-setting="overhead"
+          type="number" min="0" step=".01" value="0">
+      </div>
+      <div>
+        <label>Taxas sobre a venda (%)</label>
+        <input class="field setting" data-setting="fee"
+          type="number" min="0" max="99" step=".1" value="0">
+      </div>
+      <div>
+        <label>Margem de lucro desejada (%)</label>
+        <input class="field setting" data-setting="margin"
+          type="number" min="0" max="99" step=".1" value="30">
+      </div>
+      <div>
+        <label>Seu preço de venda por travessa (R$)</label>
+        <input class="field setting" data-setting="sale"
+          type="number" min="0" step=".01" value="0">
+      </div>
+    </div>
+  </div>
+  <div id="priceResult" class="summary"></div>
+</section>
+
+<section id="shopping" class="section">
+  <h2>Lista de compras</h2>
+  <p class="muted">Os ingredientes são somados conforme as travessas
+    adicionadas no catálogo.</p>
+  <div class="panel" id="production"></div>
+  <div class="panel" id="shoppingList"></div>
+  <button class="secondary no-print" id="copyShopping">Copiar lista</button>
+</section>
+
+<section id="orders" class="section">
+  <h2>Controle de encomendas</h2>
+  <div class="panel">
+    <div class="grid2">
+      <div>
+        <label>Nome do cliente</label>
+        <input id="clientName" class="field">
+      </div>
+      <div>
+        <label>Telefone</label>
+        <input id="clientPhone" class="field" type="tel">
+      </div>
+      <div>
+        <label>Receita</label>
+        <select id="orderRecipe" class="field"></select>
+      </div>
+      <div>
+        <label>Apresentação</label>
+        <select id="orderFormat" class="field">
+          <option>Travessa familiar</option>
+          <option>Taça individual</option>
+          <option>Embalagem presenteável</option>
+        </select>
+      </div>
+      <div>
+        <label>Quantidade</label>
+        <input id="orderQty" class="field" type="number" min="1" value="1">
+      </div>
+      <div>
+        <label>Entrega</label>
+        <input id="orderDate" class="field" type="datetime-local">
+      </div>
+      <div>
+        <label>Preço unitário (R$)</label>
+        <input id="orderPrice" class="field"
+          type="number" min="0" step=".01">
+      </div>
+      <div>
+        <label>Sinal recebido (R$)</label>
+        <input id="orderDeposit" class="field"
+          type="number" min="0" step=".01" value="0">
+      </div>
+    </div>
+    <label>Observações</label>
+    <textarea id="orderNotes" class="field" rows="2"></textarea>
+    <p><button class="primary" id="addOrder">Registrar encomenda</button></p>
+  </div>
+  <div id="ordersList"></div>
+</section>
+
+<section id="menu" class="section">
+  <h2>Cardápio de vendas</h2>
+  <div class="panel">
+    <label>Apresentação do cardápio</label>
+    <select id="menuFormat" class="field">
+      <option>Travessa familiar</option>
+      <option>Taça individual</option>
+      <option>Embalagem presenteável</option>
+    </select>
+    <p class="muted">
+      Cadastre os preços no campo abaixo de cada receita.
+      Os preços são informados por você, não calculados
+      automaticamente para formatos sem rendimento aferido.
+    </p>
+  </div>
+  <div id="menuItems" class="grid"></div>
+  <p><button id="copyMenu" class="primary">Copiar cardápio</button></p>
+</section>
+
+<section id="guide" class="section">
+  <h2>Guia de receitas — mesadoce</h2>
+  <div class="panel no-print">
+    <p>Guia editorial com 30 formulações, ingredientes, bases
+      e modos de preparo.</p>
+    <button class="primary" id="printGuide">
+      Imprimir / Salvar como PDF
+    </button>
+  </div>
+  <div id="guideContent"></div>
+</section>
+
+<section id="backup" class="section">
+  <h2>Backup dos seus dados</h2>
+  <div class="panel">
+    <p>Seus preços, lotes e encomendas ficam armazenados
+      neste navegador, quando o armazenamento local estiver disponível.</p>
+    <p><strong>Faça backups regulares.</strong> Limpar os dados do navegador
+      ou trocar de aparelho pode apagar os registros.</p>
+    <div class="actions">
+      <button class="primary" id="exportData">Baixar backup JSON</button>
+      <label class="secondary" style="display:inline-block;cursor:pointer">
+        Restaurar backup
+        <input id="importData" type="file" accept=".json,application/json"
+          style="display:none">
+      </label>
+    </div>
+  </div>
+  <div class="notice">
+    Esta versão não possui login, sincronização entre aparelhos
+    ou proteção de conteúdo pago. Não utilize os arquivos públicos
+    como controle de acesso a produtos comerciais.
+  </div>
+</section>
+
+</main>
+
+<footer>
+  mesadoce · Chef Isa Alencar<br>
+  Formulações editoriais com rendimentos estimados.
+</footer>
+
 <script>
-const questions=[
-['Qual é sua experiência com confeitaria?',['Estou começando do zero','Faço doces para a família','Já vendo doces','Já trabalho com bem-casados']],
-['Você já preparou bem-casados?',['Nunca','Já tentei','Consigo preparar','Faço com frequência']],
-['E o envelopamento dos bem-casados?',['Ainda não sei fazer','Tenho dúvidas','Já fiz algumas vezes','Faço com segurança']],
-['Se recebesse uma encomenda de 100 unidades, saberia calcular os ingredientes?',['Não','Precisaria de ajuda','Faria algumas contas','Tenho um método']],
-['Você sabe calcular o preço de venda?',['Não sei','Tenho medo de errar','Faço estimativas','Calculo meus custos']],
-['Como organiza pedidos pelo WhatsApp?',['Ainda não recebo pedidos','Deixo nas conversas','Anoto em caderno ou planilha','Tenho um processo']],
-['O que mais deseja conquistar agora?',['Aprender a fazer bem-casados','Produzir e embalar com segurança','Organizar custos e pedidos','Atender mais encomendas']]];
-let step=0,started=false;const answers=Array(7).fill(null),visited=new Set();const el=id=>document.getElementById(id);
-function event(name,params={}){if(typeof gtag==='function')gtag('event',name,{...params,product:'bem_casados_express'})}
-function reached(){if(!visited.has(step)){visited.add(step);event('quiz_step',{question_number:step+1})}}
-function show(){el('count').textContent='PERGUNTA '+(step+1)+' DE 7';el('fill').style.width=(step/7*100)+'%';el('question').textContent=questions[step][0];el('options').replaceChildren();questions[step][1].forEach((v,i)=>{const b=document.createElement('button');b.className='opt';b.textContent=v;b.setAttribute('aria-pressed',String(answers[step]===i));b.onclick=()=>{if(!started){started=true;event('quiz_start')}answers[step]=i;show()};el('options').append(b)});el('back').hidden=step===0;el('next').disabled=answers[step]===null;el('next').textContent=step===6?'Ver meu resultado':'Continuar'}
-el('back').onclick=()=>{if(step>0){step--;show()}};
-el('next').onclick=()=>{if(answers[step]===null)return;if(step<6){step++;reached();show();scrollTo(0,0)}else{const score=answers.slice(0,6).reduce((a,b)=>a+b,0),type=score<=6?0:score<=13?1:2;const titles=['Seu próximo passo é aprender a técnica','Seu próximo passo é ganhar segurança na produção','Seu próximo passo é organizar as encomendas'];const texts=['Você está começando. Aprender o preparo, o envelopamento e o planejamento ajuda a construir uma base para atender encomendas.','Você já conhece algumas etapas. Um processo mais organizado pode ajudar no cálculo de quantidades e na apresentação dos seus bem-casados.','Você já tem experiência. Reunir custos, listas e atendimento em um fluxo simples pode facilitar sua rotina.'];el('resultTitle').textContent=titles[type];el('resultText').textContent=texts[type];event('quiz_complete',{result_type:type+1});el('quiz').hidden=true;el('result').hidden=false;event('offer_view',{result_type:type+1});scrollTo(0,0)}};
-el('buy').addEventListener('click',()=>event('checkout_click',{destination:'kiwify'}));el('restart').onclick=()=>{step=0;started=false;answers.fill(null);visited.clear();el('quiz').hidden=false;el('result').hidden=true;reached();show();scrollTo(0,0)};reached();show();
-</script></body></html>
+"use strict";
+
+/* =========================================
+   1. BASES — FORMULAÇÕES EDITORIAIS
+========================================= */
+
+const BASES = {
+  B1:{
+    nome:"Creme branco versátil",
+    ingredientes:[
+      ["Leite condensado",395,"g"],
+      ["Leite integral",400,"ml"],
+      ["Creme de leite",200,"g"],
+      ["Amido de milho",25,"g"]
+    ],
+    preparo:[
+      "Dissolva o amido no leite ainda frio.",
+      "Acrescente o leite condensado e cozinhe, mexendo continuamente, até engrossar.",
+      "Retire do fogo e incorpore o creme de leite.",
+      "Transfira para recipiente higienizado, cubra em contato e resfrie rapidamente sob refrigeração."
+    ]
+  },
+  B2:{
+    nome:"Creme de chocolate",
+    ingredientes:[
+      ["Leite condensado",395,"g"],
+      ["Leite integral",300,"ml"],
+      ["Creme de leite",200,"g"],
+      ["Amido de milho",20,"g"],
+      ["Chocolate meio amargo",180,"g"]
+    ],
+    preparo:[
+      "Dissolva o amido no leite frio.",
+      "Junte o leite condensado e cozinhe até engrossar.",
+      "Fora do fogo, adicione o chocolate e misture até derreter.",
+      "Incorpore o creme de leite e resfrie rapidamente sob refrigeração."
+    ]
+  },
+  B3:{
+    nome:"Base crocante com creme",
+    ingredientes:[
+      ["Biscoito maisena",240,"g"],
+      ["Manteiga sem sal",90,"g"],
+      ["Cream cheese pasteurizado",250,"g"],
+      ["Creme de leite",200,"g"],
+      ["Açúcar de confeiteiro",70,"g"]
+    ],
+    preparo:[
+      "Triture os biscoitos e misture com a manteiga derretida.",
+      "Pressione a farofa no fundo de uma travessa higienizada.",
+      "Misture cream cheese, creme de leite e açúcar até obter creme uniforme.",
+      "Espalhe o creme sobre a base e mantenha sob refrigeração."
+    ]
+  }
+};
+
+/* =========================================
+   2. CATÁLOGO — EXATAMENTE 30 RECEITAS
+========================================= */
+
+const DADOS = [
+["Damasco com Creme Branco","B1",
+ [["Damasco seco",180,"g"],["Água",180,"ml"],["Açúcar",35,"g"]],
+ "Hidrate e cozinhe os damascos com água e açúcar até amaciarem. Resfrie, pique e intercale com o creme branco."],
+
+["Abacaxi com Coco","B1",
+ [["Abacaxi",450,"g"],["Coco ralado",90,"g"],["Açúcar",65,"g"]],
+ "Cozinhe o abacaxi picado com açúcar até reduzir bem o líquido. Resfrie e monte com o creme e o coco."],
+
+["Paçoca Cremosa","B1",
+ [["Paçoca",170,"g"],["Creme de leite",80,"g"]],
+ "Esfarele a paçoca, misture uma parte ao creme de leite e intercale com a base. Finalize com a paçoca restante."],
+
+["Morango com Leite em Pó","B1",
+ [["Morango",400,"g"],["Leite em pó",85,"g"]],
+ "Incorpore o leite em pó ao creme. Depois de frio, monte camadas com morangos higienizados e bem secos."],
+
+["Uva Verde com Creme Branco","B1",
+ [["Uva verde sem sementes",420,"g"],["Chocolate branco",100,"g"]],
+ "Distribua as uvas higienizadas e secas entre camadas frias do creme. Finalize com chocolate branco."],
+
+["Pêssego com Baunilha","B1",
+ [["Pêssego em calda escorrido",400,"g"],
+ ["Extrato de baunilha",5,"ml"],
+ ["Biscoito champanhe",100,"g"]],
+ "Aromatize o creme com baunilha. Monte camadas com pêssegos bem escorridos e biscoitos."],
+
+["Ameixa com Doce de Leite","B1",
+ [["Ameixa seca",220,"g"],["Doce de leite",280,"g"],
+ ["Água",140,"ml"]],
+ "Cozinhe a ameixa com água até amaciar. Resfrie e faça camadas com creme branco e doce de leite."],
+
+["Frutas Tropicais com Coco","B1",
+ [["Manga",230,"g"],["Abacaxi",230,"g"],
+ ["Coco ralado",90,"g"],["Açúcar",35,"g"]],
+ "Cozinhe o abacaxi com açúcar até reduzir. Resfrie e monte com creme, manga preparada e coco."],
+
+["Nozes com Creme Branco","B1",
+ [["Nozes",180,"g"],["Doce de leite",180,"g"]],
+ "Intercale creme branco, nozes picadas e pequenas camadas de doce de leite."],
+
+["Panetone com Baunilha","B1",
+ [["Panetone",300,"g"],["Extrato de baunilha",5,"ml"],
+ ["Leite integral",90,"ml"]],
+ "Aromatize o creme e intercale com cubos de panetone levemente umedecidos com leite."],
+
+["Chocolate com Morango","B2",
+ [["Morango",400,"g"],["Chocolate meio amargo",80,"g"]],
+ "Monte o creme de chocolate frio com morangos higienizados e secos. Finalize com chocolate picado."],
+
+["Chocolate com Damasco","B2",
+ [["Damasco seco",200,"g"],["Água",180,"ml"],
+ ["Açúcar",25,"g"]],
+ "Cozinhe o damasco com água e açúcar. Resfrie e intercale com o creme de chocolate."],
+
+["Chocolate com Paçoca","B2",
+ [["Paçoca",180,"g"],["Amendoim torrado",80,"g"]],
+ "Alterne camadas de creme de chocolate e paçoca. Finalize com amendoim torrado."],
+
+["Chocolate com Coco — Prestígio","B2",
+ [["Coco ralado",180,"g"],["Leite condensado",200,"g"],
+ ["Leite de coco",100,"ml"]],
+ "Cozinhe coco, leite condensado e leite de coco até formar recheio cremoso. Resfrie e intercale com chocolate."],
+
+["Chocolate com Maracujá","B2",
+ [["Polpa de maracujá",250,"g"],["Açúcar",75,"g"]],
+ "Cozinhe a polpa com açúcar até reduzir. Resfrie totalmente e distribua sobre o creme de chocolate."],
+
+["Chocolate com Laranja","B2",
+ [["Suco de laranja",200,"ml"],["Açúcar",55,"g"],
+ ["Raspas de laranja",5,"g"]],
+ "Reduza o suco com açúcar. Resfrie, acrescente raspas e monte com o creme de chocolate."],
+
+["Chocolate com Nozes","B2",
+ [["Nozes",200,"g"],["Doce de leite",150,"g"]],
+ "Faça camadas de creme de chocolate com doce de leite e nozes picadas."],
+
+["Chocolate com Cereja","B2",
+ [["Cerejas em calda escorridas",250,"g"],
+ ["Chocolate ao leite",100,"g"]],
+ "Escorra bem as cerejas, monte entre camadas de creme e finalize com raspas de chocolate."],
+
+["Chocolate com Creme de Avelã","B2",
+ [["Creme de avelã",260,"g"],["Avelã torrada",70,"g"]],
+ "Intercale o creme de chocolate com camadas finas de creme de avelã. Finalize com avelãs picadas."],
+
+["Chocolate com Banana e Caramelo","B2",
+ [["Banana",380,"g"],["Açúcar",100,"g"],["Água",40,"ml"]],
+ "Prepare caramelo com açúcar e água, incorpore a banana com cuidado e aqueça. Resfrie antes de montar."],
+
+["Banoffee na Travessa","B3",
+ [["Banana",400,"g"],["Doce de leite",400,"g"],
+ ["Canela",3,"g"]],
+ "Sobre a base crocante, espalhe doce de leite, banana e creme. Finalize com canela."],
+
+["Cheesecake de Frutas Vermelhas","B3",
+ [["Frutas vermelhas",350,"g"],["Açúcar",85,"g"],
+ ["Suco de limão",15,"ml"]],
+ "Cozinhe frutas, açúcar e limão até obter cobertura espessa. Resfrie e espalhe sobre o creme."],
+
+["Limão com Chocolate Branco","B3",
+ [["Chocolate branco",200,"g"],["Suco de limão",50,"ml"],
+ ["Raspas de limão",4,"g"]],
+ "Derreta o chocolate branco, incorpore gradualmente ao creme e adicione o limão aos poucos, verificando a textura."],
+
+["Doce de Leite com Castanhas","B3",
+ [["Doce de leite",350,"g"],["Castanhas",170,"g"]],
+ "Monte o creme sobre a base crocante, espalhe doce de leite e finalize com castanhas."],
+
+["Maçã com Canela e Crumble","B3",
+ [["Maçã",450,"g"],["Açúcar",65,"g"],
+ ["Canela",5,"g"],["Aveia",70,"g"],["Manteiga",30,"g"]],
+ "Cozinhe maçã com açúcar e canela. Doure aveia com manteiga à parte, resfrie e use como cobertura."],
+
+["Damasco com Cream Cheese","B3",
+ [["Damasco seco",220,"g"],["Água",180,"ml"],
+ ["Açúcar",45,"g"]],
+ "Cozinhe o damasco com água e açúcar até amaciar. Resfrie e espalhe sobre a base cremosa."],
+
+["Coco com Abacaxi Crocante","B3",
+ [["Abacaxi",400,"g"],["Coco ralado",120,"g"],
+ ["Açúcar",65,"g"]],
+ "Reduza o abacaxi com açúcar, resfrie e distribua sobre o creme. Finalize com coco."],
+
+["Maracujá com Biscoito Amanteigado","B3",
+ [["Polpa de maracujá",220,"g"],["Açúcar",75,"g"],
+ ["Biscoito amanteigado",100,"g"]],
+ "Prepare uma calda reduzida de maracujá. Resfrie, espalhe sobre o creme e finalize com biscoito triturado."],
+
+["Chocolate com Bombom Crocante","B3",
+ [["Chocolate meio amargo",200,"g"],
+ ["Creme de leite",120,"g"],["Bombom crocante",180,"g"]],
+ "Prepare ganache com chocolate e creme de leite. Resfrie, espalhe sobre o creme e finalize com bombons picados."],
+
+["Frutas Tropicais com Farofa Doce","B3",
+ [["Manga",220,"g"],["Abacaxi",250,"g"],
+ ["Açúcar",70,"g"],["Coco ralado",75,"g"]],
+ "Cozinhe o abacaxi com açúcar até reduzir. Resfrie, monte com a manga e finalize com coco e farofa crocante."]
+];
+
+const RECIPES = DADOS.map((r,i)=>({
+  id:"REC-"+String(i+1).padStart(3,"0"),
+  name:r[0],
+  base:r[1],
+  extras:r[2],
+  finish:r[3],
+  estimatedServings:8,
+  photo:"images/REC-"+String(i+1).padStart(3,"0")+".webp"
+}));
+
+/* =========================================
+   3. ARMAZENAMENTO
+========================================= */
+
+const STORAGE_KEY="mesadoce_v1";
+const DEFAULT={
+  costs:{},
+  lots:{},
+  orders:[],
+  menuPrices:{},
+  settings:{
+    packaging:0,labor:0,overhead:0,
+    fee:0,margin:30,sale:0
+  }
+};
+
+function loadState(){
+  try{
+    const saved=JSON.parse(localStorage.getItem(STORAGE_KEY)||"{}");
+    return {
+      costs:saved.costs||{},
+      lots:saved.lots||{},
+      orders:Array.isArray(saved.orders)?saved.orders:[],
+      menuPrices:saved.menuPrices||{},
+      settings:{...DEFAULT.settings,...(saved.settings||{})}
+    };
+  }catch(e){return structuredClone(DEFAULT);}
+}
+
+let state=loadState();
+let selectedRecipe=RECIPES[0].id;
+let activePage="catalog";
+
+function save(){
+  try{localStorage.setItem(STORAGE_KEY,JSON.stringify(state));}
+  catch(e){console.warn("Não foi possível salvar.",e);}
+}
+
+function byId(id){return document.getElementById(id);}
+function esc(text){
+  return String(text??"").replace(/[&<>"']/g,c=>({
+    "&":"&amp;","<":"&lt;",">":"&gt;",
+    '"':"&quot;","'":"&#39;"
+  }[c]));
+}
+function cash(n){
+  return Number(n||0).toLocaleString("pt-BR",{
+    style:"currency",currency:"BRL"
+  });
+}
+function num(n){
+  return Number(n||0).toLocaleString("pt-BR",{
+    maximumFractionDigits:2
+  });
+}
+function getRecipe(id){
+  return RECIPES.find(r=>r.id===id);
+}
+function ingredients(recipe){
+  const map=new Map();
+  for(const entry of [
+    ...BASES[recipe.base].ingredientes,...recipe.extras
+  ]){
+    const [name,qty,unit]=entry;
+    const key=name+"|"+unit;
+    if(!map.has(key))map.set(key,{name,qty:0,unit,key});
+    map.get(key).qty+=qty;
+  }
+  return Array.from(map.values());
+}
+function showPage(page){
+  activePage=page;
+  document.querySelectorAll(".section").forEach(s=>
+    s.classList.toggle("active",s.id===page));
+  document.querySelectorAll("nav button").forEach(b=>
+    b.classList.toggle("active",b.dataset.page===page));
+  if(page==="shopping")renderShopping();
+  if(page==="orders")renderOrders();
+  if(page==="menu")renderMenu();
+  if(page==="guide")renderGuide();
+  window.scrollTo({top:0,behavior:"smooth"});
+}
+document.querySelectorAll("[data-page]").forEach(btn=>
+  btn.addEventListener("click",()=>showPage(btn.dataset.page))
+);
+
+/* =========================================
+   4. CATÁLOGO E IMAGENS
+========================================= */
+
+function photoMarkup(recipe){
+  return `<img src="${esc(recipe.photo)}"
+    alt="Fotografia de ${esc(recipe.name)}"
+    loading="lazy" onerror="
+      this.style.display='none';
+      this.nextElementSibling.style.display='grid'
+    ">
+    <div class="photo-pending" style="display:none">
+      <div><span>🍰</span>Fotografia pendente<br>
+      ${esc(recipe.id)}</div>
+    </div>`;
+}
+
+function renderCatalog(){
+  const search=byId("search").value.toLowerCase().trim();
+  const filter=byId("baseFilter").value;
+  const found=RECIPES.filter(r=>
+    (!filter||r.base===filter)&&
+    r.name.toLowerCase().includes(search)
+  );
+  byId("cards").innerHTML=found.map(r=>`
+    <article class="card">
+      ${photoMarkup(r)}
+      <div class="cardbody">
+        <span class="tag">${esc(r.id)}</span>
+        <h3>${esc(r.name)}</h3>
+        <p class="muted">${esc(BASES[r.base].nome)}</p>
+        ${r.id==="REC-022"?
+          '<p class="tag">A Preferida da Chef Isa Alencar</p>':""}
+        <div class="actions">
+          <button class="primary"
+            data-detail="${r.id}">Ver receita</button>
+          <button class="secondary"
+            data-add="${r.id}">+ 1 travessa</button>
+        </div>
+      </div>
+    </article>
+  `).join("")||"<p>Nenhuma receita encontrada.</p>";
+  byId("cards").querySelectorAll("[data-detail]").forEach(b=>
+    b.onclick=()=>showRecipe(b.dataset.detail));
+  byId("cards").querySelectorAll("[data-add]").forEach(b=>
+    b.onclick=()=>addLot(b.dataset.add,1));
+}
+
+function showRecipe(id){
+  const r=getRecipe(id);
+  if(!r)return;
+  const base=BASES[r.base];
+  byId("recipeDetail").innerHTML=`
+    <div class="actions no-print">
+      <button class="secondary" id="closeDetail">Fechar ficha</button>
+      <button class="primary" id="detailAdd">Adicionar 1 travessa</button>
+    </div>
+    <h2 style="margin-top:15px">${esc(r.name)}</h2>
+    <p class="muted">${esc(r.id)} · ${esc(base.nome)}</p>
+    <p><b>Rendimento editorial estimado:</b>
+      1 travessa média / cerca de ${r.estimatedServings} porções.</p>
+    <h3>Ingredientes</h3>
+    <ul>${ingredients(r).map(x=>`
+      <li>${num(x.qty)} ${esc(x.unit)} de ${esc(x.name)}</li>
+    `).join("")}</ul>
+    <h3>Preparo da base</h3>
+    <ol>${base.preparo.map(s=>`<li>${esc(s)}</li>`).join("")}</ol>
+    <h3>Finalização</h3>
+    <p>${esc(r.finish)}</p>
+    <h3>Apresentações</h3>
+    <p>Travessa familiar, taça individual e embalagem presenteável.
+    Os pesos e rendimentos de cada formato precisam ser aferidos.</p>
+    <div class="notice">
+      Formulação editorial não testada.
+      Não há prazo de validade certificado.
+      Verifique ingredientes, alergênicos, estabilidade,
+      refrigeração e condições sanitárias antes da venda.
+    </div>
+  `;
+  const box=byId("recipeDetail");
+  box.classList.add("open");
+  byId("closeDetail").onclick=()=>box.classList.remove("open");
+  byId("detailAdd").onclick=()=>addLot(id,1);
+  box.scrollIntoView({behavior:"smooth",block:"start"});
+}
+
+byId("search").addEventListener("input",renderCatalog);
+byId("baseFilter").addEventListener("change",renderCatalog);
+
+/* =========================================
+   5. PRODUÇÃO E COMPRAS
+========================================= */
+
+function addLot(id,amount){
+  state.lots[id]=Math.max(0,
+    Math.min(999,Number(state.lots[id]||0)+amount));
+  save();
+  if(activePage==="shopping")renderShopping();
+  else alert("Adicionado à produção.");
+}
+
+function shoppingItems(){
+  const map=new Map();
+  for(const [id,qty] of Object.entries(state.lots)){
+    const recipe=getRecipe(id);
+    if(!recipe||Number(qty)<=0)continue;
+    for(const item of ingredients(recipe)){
+      if(!map.has(item.key))
+        map.set(item.key,{...item,qty:0});
+      map.get(item.key).qty+=item.qty*Number(qty);
+    }
+  }
+  return [...map.values()].sort((a,b)=>
+    a.name.localeCompare(b.name,"pt-BR"));
+}
+
+function renderShopping(){
+  const active=Object.entries(state.lots)
+    .filter(([id,qty])=>getRecipe(id)&&qty>0);
+  byId("production").innerHTML=`
+    <h3>Travessas planejadas</h3>
+    ${active.map(([id,qty])=>{
+      const r=getRecipe(id);
+      return `<div class="row">
+        <div>${esc(r.name)}<br><span class="muted">
+          ${esc(id)}</span></div>
+        <div class="actions">
+          <button class="secondary" data-minus="${id}">−</button>
+          <strong>${qty}</strong>
+          <button class="secondary" data-plus="${id}">+</button>
+        </div>
+      </div>`;
+    }).join("")||"<p>Nenhuma travessa planejada.</p>"}
+  `;
+  byId("shoppingList").innerHTML=`
+    <h3>Ingredientes consolidados</h3>
+    ${shoppingItems().map(i=>`
+      <div class="row">
+        <label style="margin:0">
+          <input type="checkbox">
+          ${esc(i.name)}
+        </label>
+        <strong>${num(i.qty)} ${esc(i.unit)}</strong>
+      </div>
+    `).join("")||"<p>A lista aparecerá após adicionar receitas.</p>"}
+  `;
+  document.querySelectorAll("[data-plus]").forEach(b=>
+    b.onclick=()=>addLot(b.dataset.plus,1));
+  document.querySelectorAll("[data-minus]").forEach(b=>
+    b.onclick=()=>addLot(b.dataset.minus,-1));
+}
+
+byId("copyShopping").onclick=async()=>{
+  const text=shoppingItems().map(i=>
+    `${num(i.qty)} ${i.unit} — ${i.name}`).join("\n");
+  if(!text)return alert("A lista está vazia.");
+  try{
+    await navigator.clipboard.writeText(text);
+    alert("Lista copiada.");
+  }catch(e){
+    alert("Não foi possível copiar neste navegador.");
+  }
+};
+
+/* =========================================
+   6. CUSTOS E LUCRO
+========================================= */
+
+function renderRecipeSelects(){
+  for(const selectId of ["priceRecipe","orderRecipe"]){
+    byId(selectId).innerHTML=RECIPES.map(r=>`
+      <option value="${r.id}">${esc(r.name)}</option>
+    `).join("");
+  }
+}
+
+function priceRecipe(){
+  return getRecipe(byId("priceRecipe").value)||RECIPES[0];
+}
+
+function renderCostInputs(){
+  const r=priceRecipe();
+  byId("ingredientCosts").innerHTML=`
+    <h3>Preços dos ingredientes</h3>
+    <p class="muted">
+      Informe o custo por quilograma (g) ou por litro (ml).
+      Para ingredientes comprados por pacote, converta o preço
+      proporcionalmente antes de preencher.
+    </p>
+    ${ingredients(r).map(i=>`
+      <div class="row">
+        <div>
+          <strong>${esc(i.name)}</strong><br>
+          <span class="muted">Receita: ${num(i.qty)} ${i.unit}</span>
+        </div>
+        <div style="width:140px">
+          <label>R$ / ${i.unit==="ml"?"litro":"kg"}</label>
+          <input class="field costInput" type="number" min="0"
+            step=".01" data-key="${esc(i.key)}"
+            value="${esc(state.costs[i.key]??"")}">
+        </div>
+      </div>
+    `).join("")}
+  `;
+  document.querySelectorAll(".costInput").forEach(input=>
+    input.oninput=()=>{
+      state.costs[input.dataset.key]=input.value;
+      save();
+      calculate();
+    });
+  calculate();
+}
+
+function calculate(){
+  const r=priceRecipe();
+  const qty=Math.max(1,Number(byId("priceQty").value)||1);
+  const items=ingredients(r);
+  const missing=items.filter(i=>
+    state.costs[i.key]===""||
+    state.costs[i.key]===undefined||
+    !Number.isFinite(Number(state.costs[i.key]))||
+    Number(state.costs[i.key])<0
+  );
+  if(missing.length){
+    byId("priceResult").innerHTML=`
+      <p>Preencha os preços dos ingredientes.</p>
+      <strong>${missing.length} pendente(s)</strong>`;
+    return;
+  }
+  const ing=items.reduce((s,i)=>
+    s+i.qty/1000*Number(state.costs[i.key]),0);
+  const settings=state.settings;
+  const packaging=Math.max(0,Number(settings.packaging)||0);
+  const labor=Math.max(0,Number(settings.labor)||0);
+  const overhead=Math.max(0,Number(settings.overhead)||0);
+  const fee=Math.max(0,Number(settings.fee)||0)/100;
+  const margin=Math.max(0,Number(settings.margin)||0)/100;
+  const sale=Math.max(0,Number(settings.sale)||0);
+  const unitCost=ing+packaging+labor+overhead;
+  const valid=(fee+margin)<1;
+  const suggested=valid?unitCost/(1-fee-margin):null;
+  const actualProfit=sale*(1-fee)-unitCost;
+  const actualMargin=sale>0?actualProfit/sale*100:null;
+  byId("priceResult").innerHTML=`
+    <div class="grid2">
+      <div><div class="muted">Ingredientes por travessa</div>
+        <strong>${cash(ing)}</strong></div>
+      <div><div class="muted">Custo completo por travessa</div>
+        <strong>${cash(unitCost)}</strong></div>
+      <div><div class="muted">Preço calculado pela margem-alvo</div>
+        <strong>${suggested===null?
+          "Margem e taxas incompatíveis":cash(suggested)}</strong></div>
+      <div><div class="muted">Lucro por travessa ao seu preço</div>
+        <strong>${cash(actualProfit)}</strong></div>
+      <div><div class="muted">Margem real ao seu preço</div>
+        <strong>${actualMargin===null?"—":
+          num(actualMargin)+"%"}</strong></div>
+      <div><div class="muted">Custo do lote (${qty})</div>
+        <strong>${cash(unitCost*qty)}</strong></div>
+    </div>
+    <p class="muted">
+      Cálculo estimado. Confirme perdas, tributos, custos indiretos,
+      rendimento real e condições comerciais.
+    </p>
+  `;
+}
+
+byId("priceRecipe").onchange=renderCostInputs;
+byId("priceQty").oninput=calculate;
+document.querySelectorAll(".setting").forEach(input=>{
+  input.value=state.settings[input.dataset.setting];
+  input.oninput=()=>{
+    state.settings[input.dataset.setting]=Number(input.value)||0;
+    save();calculate();
+  };
+});
+
+/* =========================================
+   7. ENCOMENDAS
+========================================= */
+
+function orderTotal(o){return o.qty*o.price;}
+
+byId("addOrder").onclick=()=>{
+  const name=byId("clientName").value.trim();
+  const qty=Number(byId("orderQty").value);
+  const price=Number(byId("orderPrice").value);
+  const deposit=Number(byId("orderDeposit").value);
+  if(!name)return alert("Informe o nome do cliente.");
+  if(!Number.isInteger(qty)||qty<1)
+    return alert("Informe uma quantidade válida.");
+  if(!Number.isFinite(price)||price<0)
+    return alert("Informe um preço válido.");
+  if(!Number.isFinite(deposit)||deposit<0||
+     deposit>qty*price)
+    return alert("Confira o valor do sinal.");
+
+  const order={
+    id:"PED-"+Date.now(),
+    name,
+    phone:byId("clientPhone").value.trim(),
+    recipe:byId("orderRecipe").value,
+    format:byId("orderFormat").value,
+    qty,price,deposit,
+    date:byId("orderDate").value,
+    notes:byId("orderNotes").value.trim(),
+    status:"Recebido"
+  };
+  state.orders.push(order);
+  save();renderOrders();
+  byId("clientName").value="";
+  byId("clientPhone").value="";
+  byId("orderNotes").value="";
+  alert("Encomenda registrada neste navegador.");
+};
+
+function renderOrders(){
+  byId("ordersList").innerHTML=state.orders.map((o,index)=>{
+    const r=getRecipe(o.recipe);
+    return `<div class="panel">
+      <div class="row">
+        <div><strong>${esc(o.name)}</strong><br>
+          <span class="muted">${esc(o.phone)}</span></div>
+        <span class="tag">${esc(o.status)}</span>
+      </div>
+      <p>${esc(r?r.name:o.recipe)} ·
+        ${esc(o.format)} · ${o.qty} unidade(s)</p>
+      <p class="muted">
+        Entrega: ${esc(o.date||"Não definida")}<br>
+        ${esc(o.notes||"")}
+      </p>
+      <div class="grid2">
+        <div><b>Total:</b> ${cash(orderTotal(o))}</div>
+        <div><b>Saldo:</b> ${cash(orderTotal(o)-o.deposit)}</div>
+      </div>
+      <div class="actions" style="margin-top:12px">
+        <select class="field orderStatus" data-index="${index}"
+          style="max-width:210px">
+          ${["Recebido","Em produção","Pronto","Entregue",
+             "Cancelado"].map(s=>`
+            <option ${o.status===s?"selected":""}>${s}</option>
+          `).join("")}
+        </select>
+        <button class="danger" data-delete="${index}">
+          Excluir
+        </button>
+      </div>
+    </div>`;
+  }).join("")||'<div class="panel">Nenhuma encomenda registrada.</div>';
+  document.querySelectorAll(".orderStatus").forEach(select=>
+    select.onchange=()=>{
+      state.orders[Number(select.dataset.index)].status=select.value;
+      save();renderOrders();
+    });
+  document.querySelectorAll("[data-delete]").forEach(btn=>
+    btn.onclick=()=>{
+      if(!confirm("Excluir esta encomenda?"))return;
+      state.orders.splice(Number(btn.dataset.delete),1);
+      save();renderOrders();
+    });
+}
+
+/* =========================================
+   8. CARDÁPIO
+========================================= */
+
+function menuKey(id,format){return id+"|"+format;}
+
+function renderMenu(){
+  const format=byId("menuFormat").value;
+  byId("menuItems").innerHTML=RECIPES.map(r=>{
+    const key=menuKey(r.id,format);
+    return `<article class="panel">
+      <span class="tag">${r.id}</span>
+      <h3>${esc(r.name)}</h3>
+      <label>Preço em ${esc(format)} (R$)</label>
+      <input class="field menuPrice" data-key="${esc(key)}"
+        type="number" min="0" step=".01"
+        value="${esc(state.menuPrices[key]??"")}">
+    </article>`;
+  }).join("");
+  document.querySelectorAll(".menuPrice").forEach(input=>
+    input.oninput=()=>{
+      state.menuPrices[input.dataset.key]=input.value;
+      save();
+    });
+}
+byId("menuFormat").onchange=renderMenu;
+
+byId("copyMenu").onclick=async()=>{
+  const format=byId("menuFormat").value;
+  const lines=["MESADOCE — CARDÁPIO",format,""];
+  for(const r of RECIPES){
+    const value=state.menuPrices[menuKey(r.id,format)];
+    if(value!==undefined&&value!==""&&Number(value)>0)
+      lines.push(r.name+" — "+cash(Number(value)));
+  }
+  if(lines.length===3)return alert("Cadastre pelo menos um preço.");
+  try{
+    await navigator.clipboard.writeText(lines.join("\n"));
+    alert("Cardápio copiado.");
+  }catch(e){alert("Não foi possível copiar.");}
+};
+
+/* =========================================
+   9. GUIA PARA PDF
+========================================= */
+
+function renderGuide(){
+  byId("guideContent").innerHTML=`
+    <div class="panel">
+      <h2>mesadoce</h2>
+      <p><strong>Chef Isa Alencar</strong></p>
+      <p>Método 3 × 30 · Guia editorial de sobremesas</p>
+      <p>Três bases, 30 combinações e sugestões de apresentação
+        para travessas, taças individuais e embalagens presenteáveis.</p>
+      <div class="notice">
+        As formulações não passaram por testes culinários.
+        Os rendimentos são estimados e não representam
+        garantia de estabilidade ou validade.
+      </div>
+    </div>
+    ${RECIPES.map(r=>{
+      const base=BASES[r.base];
+      return `<article class="panel printRecipe">
+        <h3>${esc(r.id)} — ${esc(r.name)}</h3>
+        <p><b>Base:</b> ${esc(base.nome)}<br>
+        <b>Rendimento estimado:</b> 1 travessa média /
+        aproximadamente 8 porções.</p>
+        <h4>Ingredientes</h4>
+        <ul>${ingredients(r).map(i=>`
+          <li>${num(i.qty)} ${i.unit} — ${esc(i.name)}</li>
+        `).join("")}</ul>
+        <h4>Modo de preparo</h4>
+        <ol>${base.preparo.map(s=>`
+          <li>${esc(s)}</li>
+        `).join("")}
+          <li>${esc(r.finish)}</li>
+          <li>Monte em recipiente alimentício higienizado,
+          resfrie as preparações que necessitem de resfriamento
+          e mantenha sob refrigeração adequada.</li>
+        </ol>
+        <p><b>Apresentações:</b> travessa familiar,
+        taça individual ou embalagem presenteável.
+        Pesos por formato a aferir.</p>
+      </article>`;
+    }).join("")}
+    <div class="panel">
+      <h3>Orientações gerais</h3>
+      <p>Utilize matérias-primas seguras, mantenha
+      higiene de superfícies e utensílios, higienize frutas,
+      resfrie rapidamente preparações quentes e preserve
+      a cadeia de frio.</p>
+      <p>Consulte as regras sanitárias locais antes da
+      comercialização. Verifique os alergênicos conforme
+      os ingredientes e marcas efetivamente utilizados.
+      Não atribua prazo de validade sem fundamentação.</p>
+    </div>
+  `;
+}
+byId("printGuide").onclick=()=>{
+  renderGuide();
+  window.print();
+};
+
+/* =========================================
+   10. BACKUP E RESTAURAÇÃO
+========================================= */
+
+byId("exportData").onclick=()=>{
+  const blob=new Blob(
+    [JSON.stringify({
+      produto:"mesadoce",
+      version:1,
+      exportedAt:new Date().toISOString(),
+      data:state
+    },null,2)],
+    {type:"application/json"}
+  );
+  const url=URL.createObjectURL(blob);
+  const link=document.createElement("a");
+  link.href=url;
+  link.download="mesadoce-backup.json";
+  document.body.appendChild(link);
+  link.click();
+  link.remove();
+  setTimeout(()=>URL.revokeObjectURL(url),1000);
+};
+
+byId("importData").onchange=async event=>{
+  const file=event.target.files[0];
+  if(!file)return;
+  try{
+    const payload=JSON.parse(await file.text());
+    if(payload.produto!=="mesadoce"||
+       payload.version!==1||
+       !payload.data||
+       typeof payload.data!=="object"||
+       !Array.isArray(payload.data.orders))
+      throw new Error("Arquivo incompatível.");
+    if(!confirm("Substituir os dados atuais pelo backup?"))return;
+    const d=payload.data;
+    state={
+      costs:d.costs||{},
+      lots:d.lots||{},
+      orders:d.orders,
+      menuPrices:d.menuPrices||{},
+      settings:{...DEFAULT.settings,...(d.settings||{})}
+    };
+    save();
+    location.reload();
+  }catch(e){
+    alert("Não foi possível restaurar: "+e.message);
+  }
+};
+
+/* =========================================
+   11. INICIALIZAÇÃO
+========================================= */
+
+function init(){
+  renderRecipeSelects();
+  renderCatalog();
+  renderCostInputs();
+  renderShopping();
+  renderOrders();
+  renderMenu();
+  renderGuide();
+  console.assert(RECIPES.length===30,
+    "O catálogo deve conter 30 receitas.");
+  console.assert(
+    new Set(RECIPES.map(r=>r.id)).size===30,
+    "Os IDs das receitas devem ser únicos."
+  );
+}
+init();
+
+</script>
+</body>
+</html>
